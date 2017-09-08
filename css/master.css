@@ -30,12 +30,14 @@
 
 .calulate_operation {
   width: 10%;
+  height: 20px;
   padding: 2% 4%;
   display: inline-block;
 }
 
 .calulate_amount {
   width: 74%;
+  height: 20px;
   padding: 2%;
   display: inline-block;
 }
