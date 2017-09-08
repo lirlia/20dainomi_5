@@ -30,7 +30,7 @@ $(function() {
     amount = removeComma($('.calulate_amount').text()) + $(this).text()
     amount = amount.replace('　','')
     amount = addComma(amount)
-    if (amount.length < 25) {
+    if (amount.length < 23) {
       //数字の反映
       $('.calulate_amount').text(amount);
     }
@@ -94,7 +94,7 @@ $(function() {
   //投稿処理
   function postAction() {
     current_price = parseInt(removeComma($('.current_money').text()));
-    num = parseInt($('.calulate_amount').text());
+    num = parseInt(removeComma($('.calulate_amount').text()));
 
     ope = $('.calulate_operation').text()
 

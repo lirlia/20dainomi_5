@@ -10,7 +10,8 @@
 }
 
 .current_money {
-  margin: 2% 5%;
+  height: 20px;
+  margin: 5% 5%;
   padding: 2% 6%;
   font-size: 20px;
   border: 4px double #333;
@@ -21,6 +22,7 @@
 }
 
 .calulate {
+  height: 20px;
   margin: 0 5%;
   font-size: 20px;
   text-align: center;
@@ -59,6 +61,7 @@
 
 .calc_key {
   width: 30%;
+  height: 20px;
   padding: 2% 0;
   margin: 1% 1%;
   font-size: 20px;
