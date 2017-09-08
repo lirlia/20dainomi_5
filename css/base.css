@@ -1,0 +1,31 @@
+.back_blue {
+  background-color: #4169e1;
+  color: #fff;
+}
+
+.back_green {
+  background-color: #2e8b57;
+  color: #fff;
+}
+
+.back_gray {
+  background-color: #dcdcdc;
+  color: #333;
+}
+
+.back_red {
+  background-color: #dc143c;
+  color: #fff;
+}
+
+.back_white {
+  background-color: #fff;
+}
+
+.line_center {
+  text-align: center;
+}
+
+.line_right {
+  text-align: right;
+}
