@@ -1,9 +1,3 @@
-html {
-  box-sizing: border-box;
-  border-collapse: collapse;
-  width: 100%;
-}
-
 .select_area {
   font-size: 0px;
 }
@@ -34,12 +28,12 @@ html {
 
 .calulate_operation {
   width: 10%;
-  padding: 2% 6%;
+  padding: 2% 4%;
   display: inline-block;
 }
 
 .calulate_amount {
-  width: 60%;
+  width: 74%;
   padding: 2%;
   display: inline-block;
 }

@@ -1,3 +1,10 @@
+html {
+  box-sizing: border-box;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Helvetica,'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック';
+}
+
 .back_blue {
   background-color: #4169e1;
   color: #fff;

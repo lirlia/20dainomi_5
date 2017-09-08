@@ -27,10 +27,10 @@ $(function() {
 
   //電卓の数字をクリックした時の処理
   $('.number').on(_touch, function() {
-    amount = $('.calulate_amount').text() + $(this).text()
+    amount = removeComma($('.calulate_amount').text()) + $(this).text()
     amount = amount.replace('　','')
-
-    if (amount.length < 17) {
+    amount = addComma(amount)
+    if (amount.length < 25) {
       //数字の反映
       $('.calulate_amount').text(amount);
     }
@@ -103,7 +103,7 @@ $(function() {
       total = current_price + num
 
     // 引き算
-    } else if (ope == '-') {
+  } else if (ope == '-') {
       total = current_price - num
       if (current_price < num ) {
         alert('所持金が足りません')
