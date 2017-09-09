@@ -10,9 +10,8 @@
 }
 
 .current_money {
-  height: 20px;
   margin: 5% 5%;
-  padding: 2% 6%;
+  padding: 3% 6%;
   font-size: 20px;
   border: 4px double #333;
 }
@@ -22,23 +21,21 @@
 }
 
 .calulate {
-  height: 20px;
   margin: 0 5%;
   font-size: 20px;
   text-align: center;
+  border: 1px solid #333;
 }
 
 .calulate_operation {
   width: 10%;
-  height: 20px;
-  padding: 2% 4%;
+  padding: 3% 4%;
   display: inline-block;
 }
 
 .calulate_amount {
   width: 74%;
-  height: 20px;
-  padding: 2%;
+  padding: 3% 2%;
   display: inline-block;
 }
 
@@ -49,7 +46,7 @@
 
 .ope_key {
   width: 23%;
-  padding: 2% 0;
+  padding: 3% 0;
   margin: 0 1%;
   font-size: 20px;
   display: inline-block;
@@ -63,8 +60,7 @@
 
 .calc_key {
   width: 30%;
-  height: 20px;
-  padding: 3% 0;
+  padding: 5% 0;
   margin: 1% 1%;
   font-size: 20px;
   display: inline-block;
