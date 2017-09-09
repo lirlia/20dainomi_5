@@ -30,7 +30,7 @@ $(function() {
     amount = removeComma($('.calulate_amount').text()) + $(this).text()
     amount = amount.replace('　','')
     amount = addComma(amount)
-    if (amount.length < 23) {
+    if (amount.length < 22) {
       //数字の反映
       $('.calulate_amount').text(amount);
     }
