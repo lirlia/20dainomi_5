@@ -4,24 +4,57 @@
 
 .team {
   width: 20%;
+  padding: 4% 0;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.tool_tab_area {
+  font-size: 0px;
+  margin-bottom: 5px;
+}
+
+.tool {
+  width: calc(100% / 4);
+  padding: 4% 0;
+  display: inline-block;
+  font-size: 13px;
+}
+
+/* ガチャ */
+.gacha, .exchange {
+  width: 100%;
+  font-size: 0px;
+}
+
+.gacha_select, .exchange_select {
+  margin-bottom: 15px;
+}
+
+.gacha_key {
+  width: calc(100% / 3);
+  padding: 4% 0;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.gacha_count_key, .exchange_count_key {
+  width: calc(100% / 5);
   padding: 2% 0;
   display: inline-block;
   font-size: 13px;
 }
 
-.current_money {
-  height: 20px;
-  margin: 5% 5%;
-  padding: 3% 6%;
-  font-size: 20px;
-  line-height: 1;
-  border: 4px double #333;
+/* 換金 */
+
+.exchange_key {
+  width: calc(100% / 4);
+  padding: 4% 0;
+  display: inline-block;
+  font-size: 13px;
 }
 
-.current_money::after {
-  content: ' G'
-}
-
+/* 電卓 */
 .calulate {
   margin: 0 5%;
   font-size: 20px;
@@ -29,15 +62,24 @@
 }
 
 .calulate_operation {
-  height: 20px;
-  width: 10%;
-  padding: 3% 4%;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+  *padding: 3% 4%;
   display: inline-block;
   line-height: 1;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+}
+
+.calulate_operation p {
+  margin: 9px 0;
 }
 
 .calulate_amount {
-  height: 20px;
+  height: 25px;
   width: 74%;
   padding: 3% 2%;
   display: inline-block;
@@ -51,10 +93,14 @@
 
 .ope_key {
   width: 23%;
-  padding: 3% 0;
+  height: auto;
+  padding: 2% 0;
   margin: 0 1%;
-  font-size: 20px;
+  font-size: 13px;
   display: inline-block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
 }
 
 .calc {
@@ -65,10 +111,17 @@
 
 .calc_key {
   width: 30%;
-  height: 15px;
   padding: 5% 0;
   margin: 1% 1%;
-  font-size: 20px;
+  font-size: 13px;
   display: inline-block;
   line-height: 1;
+}
+
+/* 送信ボタンのテンプレート */
+.submit_template {
+  width: 80%;
+  font-size: 13px;
+  padding: 4% 0;
+  margin: 20px auto;
 }

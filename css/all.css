@@ -1,0 +1,17 @@
+.sort-team {
+  text-align: center;
+}
+.sort-team-number, .sort-team-price {
+  display: inline-block;
+  width: 45%;
+  margin: 10px;
+}
+
+.team-money {
+  text-align: left;
+  display: block;
+  height: 20px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #333;
+}

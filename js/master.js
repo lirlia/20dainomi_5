@@ -1,6 +1,64 @@
 $(function() {
+  firebase.initializeApp({databaseURL: "https://my-apps-9b366.firebaseio.com"});
+  database = firebase.database();
 
-  var _touch = ('ontouchstart' in document) ? 'touchstart' : 'click';
+  // ガチャのレベルアップ設定
+  gacha_level1 = 8;
+  gacha_level2 = 5;
+
+  prepare()
+  my_firebase()
+
+  _touch = ('ontouchstart' in document) ? 'touchstart' : 'click';
+
+  //ツールタブをクリックした時の処理
+  $('.tool').on(_touch, function() {
+
+    //色の選択の処理
+    $(this).addClass('back_blue')
+    $('.tool').not($(this)).removeClass('back_blue')
+    $('.tool').not($(this)).addClass('back_gray')
+    $(this).removeClass('back_gray')
+
+    // tabクリック
+    // ガチャクリック時
+    if ($(this).hasClass('gacha_tool')) {
+      $(".gacha").show()
+      $(".exchange").hide()
+      $(".calc_ope").show()
+      $(".calulate").hide()
+      $(".select_area").show()
+      $(".multi_select_area").hide()
+    }
+    // 換金クリック時
+    if ($(this).hasClass('exchange_tool')) {
+      $(".gacha").hide()
+      $(".exchange").show()
+      $(".calc_ope").show()
+      $(".calulate").hide()
+      $(".select_area").show()
+      $(".multi_select_area").hide()
+    }
+    // 電卓クリック時
+    if ($(this).hasClass('calulate_tool')) {
+      $(".gacha").hide()
+      $(".exchange").hide()
+      $(".calc_ope").show()
+      $(".calulate").show()
+      $(".select_area").show()
+      $(".multi_select_area").hide()
+    }
+
+    // 交渉クリック時
+    if ($(this).hasClass('nego_tool')) {
+      $(".gacha").hide()
+      $(".exchange").hide()
+      $(".calc_ope").hide()
+      $(".calulate").show()
+      $(".select_area").hide()
+      $(".multi_select_area").show()
+    }
+  })
 
   //チーム番号をクリックした時の処理
   $('.team').on(_touch, function() {
@@ -10,116 +68,86 @@ $(function() {
     $('.team').not($(this)).removeClass('back_blue')
     $('.team').not($(this)).addClass('back_gray')
     $(this).removeClass('back_gray')
+    my_firebase()
   })
 
-  //電卓の四則演算をクリックした時の処理
-  $('.ope_key').on(_touch, function() {
-
-    //色の選択の処理
-    $(this).addClass('back_red')
-    $('.ope_key').not($(this)).removeClass('back_red')
-    $('.ope_key').not($(this)).addClass('back_gray')
-    $(this).removeClass('back_gray')
-
-    //四則演算の反映
-    $('.calulate_operation').text($(this).text());
-  })
-
-  //電卓の数字をクリックした時の処理
-  $('.number').on(_touch, function() {
-    amount = removeComma($('.calulate_amount').text()) + $(this).text()
-    amount = amount.replace('　','')
-    amount = addComma(amount)
-    if (amount.length < 22) {
-      //数字の反映
-      $('.calulate_amount').text(amount);
-    }
-  })
-
-  //電卓のクリアをクリックした時の処理
-  $('.clear').on(_touch, function() {
-    //クリア
-    $('.calulate_amount').text('　');
-  })
-
-  //送信をクリックした時の処理
-  $('.submit').on(_touch, function() {
-
-    //チームが未チェック
-    if (!$('.select_area').children().hasClass('back_blue')) {
-      alert('チーム名を選択してください')
-      return
-    }
-    //四則演算が未チェック
-    if ($('.calulate_operation').text() == '　') {
-      alert('四則演算を選択してください')
-      return
-    }
-    //数値が未入力
-    if ($('.calulate_amount').text() == '　') {
-      alert('数値を入力してください')
-      return
-    }
-    //処理
-    postAction()
-    $('.team').removeClass('back_blue')
-    $('.team').addClass('back_gray')
-    $('.ope_key').removeClass('back_red')
-    $('.ope_key').addClass('back_gray')
-    $('.calulate_operation').text('　')
-    $('.calulate_amount').text('　')
-  })
-
-  //数値の,区切り
-  function addComma(num){
-      return String(num).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+  // 初期処理
+  function prepare() {
+    $(".exchange").hide()
+    $(".calulate").hide()
+    $(".multi_select_area").hide()
   }
 
-  //数値の,外し
-  function removeComma(num){
-    return num.replace(/,/g, '');
-  }
+  // スクロール禁止
+  $(window).on('touchmove.noScroll', function(e) {
+      e.preventDefault();
+  });
 
-  // firebase
-  firebase.initializeApp({databaseURL: "https://my-apps-9b366.firebaseio.com"});
-  database = firebase.database();
-  ref = database.ref('transaction');
-  let last_message = "dummy";
+/*
+  //電卓キーのタイプのエフェクト
+  var linkTouchStart = function(){
+    thisAnchor = $(this);
+    touchPos = thisAnchor.offset().top;
+    moveCheck = function(){
+        nowPos = thisAnchor.offset().top;
+        if(touchPos == nowPos){
+            thisAnchor.addClass("hover");
+        }
+    }
+    setTimeout(moveCheck,10);
+    }
+    var linkTouchEnd = function(){
+        thisAnchor = $(this);
+        hoverRemove = function(){
+            thisAnchor.removeClass("hover");
+        }
+        setTimeout(hoverRemove,10);
+    }
+
+    $(document).on('touchstart mousedown','.calc_key',linkTouchStart);
+    $(document).on('touchend mouseup','.calc_key',linkTouchEnd);
+*/
+});
+
+// firebase
+function my_firebase() {
+
+  team = $('.team.back_blue').text()
+  if (team == '') { team = 'default' }
+
+  ref = database.ref('transaction/' + team + '/money_amount');
+  ref_data = database.ref('transaction/' + team + '/data');
+  ref_log = database.ref('transaction/' + team + '/log');
+  def = database.ref('transaction/default');
 
   //初期読み込み & pushイベント検知
-	ref.on("value", function(snapshot) {
-		$(".current_money").text(addComma(snapshot.val()));
-	});
+  ref.on("value", function(snapshot) {
+    $(".current_money").text(addComma(snapshot.val()));
+  });
 
-  //投稿処理
-  function postAction() {
-    current_price = parseInt(removeComma($('.current_money').text()));
-    num = parseInt(removeComma($('.calulate_amount').text()));
+  //初期設定の読み込み
+  def.once("value", function(def_data) {
+    gacha_price_list = def_data.val().gacha
+    exchange_price_list = def_data.val().mission
+    mission_bonus = def_data.val().mission_ss_bonus
+  });
 
-    ope = $('.calulate_operation').text()
+  //ガチャの解禁状態を操作
+  ref_data.on("value", function(data) {
+    my_data = data.val()
 
-    // 足し算
-    if (ope == '+') {
-      total = current_price + num
-
-    // 引き算
-  } else if (ope == '-') {
-      total = current_price - num
-      if (current_price < num ) {
-        alert('所持金が足りません')
-        return
-      }
-
-    // 掛け算
-    } else if (ope == '×') {
-      total = current_price * num
-
-    // 割り算
-    } else if (ope == '÷') {
-      total = Math.floor(current_price / num)
+    // 1つ目（fとeランク）
+    if ((my_data.f + my_data.e) >= gacha_level1 && $(".gacha_key").eq(1).text() == "未解禁") {
+      $(".gacha_key").eq(1).text("ガチャ(銀)")
+    } else {
+      $(".gacha_key").eq(1).text("未解禁")
     }
+    // 1つ目（dとcランク）
+    if ((my_data.d + my_data.c) >= gacha_level2 && $(".gacha_key").eq(2).text() == "未解禁") {
+      $(".gacha_key").eq(2).text("ガチャ(金)")
+    } else {
+      $(".gacha_key").eq(2).text("未解禁")
+    }
+  });
 
-    ref.set(total)
-  };
-
-});
+};

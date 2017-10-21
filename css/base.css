@@ -29,10 +29,66 @@ html {
   background-color: #fff;
 }
 
+.current_money {
+  height: 20px;
+  margin: 5% 5%;
+  padding: 3% 6%;
+  font-size: 20px;
+  line-height: 1;
+  border: 4px double #333;
+}
+
+.current_money::after {
+  content: ' G'
+}
+
+.font_normal {
+  color: #333;
+  font-size: 13px;
+  padding: 5px 0;
+}
+.font_blue {
+  color: #4169e1
+}
+
+.font_red {
+  color: #dc143c
+}
+/*
+.hover {
+    background-color: #c0c0c0;
+    color: #333;
+}
+*/
+
+.heading {
+  padding: 5% 0;
+  margin-bottom: 10%;
+}
+
 .line_center {
   text-align: center;
 }
 
 .line_right {
   text-align: right;
+}
+
+.select
+{
+  -webkit-appearance: button;
+   -moz-appearance: button;
+   appearance: button;
+   text-indent: 1em;
+   width: 100%;
+   background-position: right center;
+   line-height: 40px;
+   font-size: 15px;
+   vertical-align: middle;
+   border:1px solid #CCC;
+   margin-bottom:5px;
+}
+
+.top_margin_10 {
+  margin-top: 10%;
 }

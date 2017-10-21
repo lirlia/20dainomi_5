@@ -9,10 +9,21 @@
       <link rel="stylesheet" type="text/css" href="./css/master.css">
       <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
       <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+      <script src="./js/base.js"></script>
       <script src="./js/master.js"></script>
+      <script src="./js/calc.js"></script>
+      <script src="./js/gacha.js"></script>
+      <script src="./js/exchange.js"></script>
+      <script src="./js/nego.js"></script>
   </head>
 
   <body>
+    <div class="tool_tab_area">
+      <div class="tool back_blue line_center gacha_tool">ガチャ</div>
+      <div class="tool back_gray line_center exchange_tool">換金</div>
+      <div class="tool back_gray line_center calulate_tool">電卓</div>
+      <div class="tool back_gray line_center nego_tool">交渉</div>
+    </div>
     <div class="select_area">
       <div class="team back_gray line_center">1</div>
       <div class="team back_gray line_center">2</div>
@@ -25,31 +36,113 @@
       <div class="team back_gray line_center">9</div>
       <div class="team back_gray line_center">10</div>
     </div>
-    <div class="current_money back_gray line_right">　</div>
-    <div class="calulate">
-      <div class="calulate_operation back_gray line_center">　</div>
-      <div class="calulate_amount back_gray line_right">　</div>
-
-      <div class="calc_ope">
-        <div class="ope_key operation back_gray line_center">+</div>
-        <div class="ope_key operation back_gray line_center">-</div>
-        <div class="ope_key operation back_gray line_center">×</div>
-        <div class="ope_key operation back_gray line_center">÷</div>
+    <div class="multi_select_area">
+      <select name="src_team" size="1" class="src_team select line_center">
+        <option value="お金を払うチームを選択">お金を払うチームを選択</option>
+        <option value="1">チーム1</option>
+        <option value="2">チーム2</option>
+        <option value="3">チーム3</option>
+        <option value="4">チーム4</option>
+        <option value="5">チーム5</option>
+        <option value="6">チーム6</option>
+        <option value="7">チーム7</option>
+        <option value="8">チーム8</option>
+        <option value="9">チーム9</option>
+        <option value="10">チーム10</option>
+      </select>
+      <p class="font_normal line_center">↓</p>
+      <select name="dest_team" size="1" class="dest_team select line_center">
+        <option value="お金を受け取るチームを選択">お金を受け取るチームを選択</option>
+        <option value="1">チーム1</option>
+        <option value="2">チーム2</option>
+        <option value="3">チーム3</option>
+        <option value="4">チーム4</option>
+        <option value="5">チーム5</option>
+        <option value="6">チーム6</option>
+        <option value="7">チーム7</option>
+        <option value="8">チーム8</option>
+        <option value="9">チーム9</option>
+        <option value="10">チーム10</option>
+      </select>
+    </div>
+    <div class="current_money back_gray line_right"></div>
+    <div class="toolbox">
+      <div class="gacha">
+        <p class="font_normal">ガチャの種類</p>
+        <div class="gacha_select">
+          <div class="gacha_key back_gray line_center">ガチャ(銅)</div>
+          <div class="gacha_key back_gray line_center">未解禁</div>
+          <div class="gacha_key back_gray line_center">未解禁</div>
+        </div>
+        <p class="font_normal">ガチャを引く回数</p>
+        <div class="gacha_count">
+          <div class="gacha_count_key number back_gray line_center">1</div>
+          <div class="gacha_count_key number back_gray line_center">2</div>
+          <div class="gacha_count_key number back_gray line_center">3</div>
+          <div class="gacha_count_key number back_gray line_center">4</div>
+          <div class="gacha_count_key number back_gray line_center">5</div>
+          <div class="gacha_count_key number back_gray line_center">6</div>
+          <div class="gacha_count_key number back_gray line_center">7</div>
+          <div class="gacha_count_key number back_gray line_center">8</div>
+          <div class="gacha_count_key number back_gray line_center">9</div>
+          <div class="gacha_count_key number back_gray line_center">10</div>
+        </div>
+        <div class="gacha_submit submit_template back_green line_center">ガチャを引く</div>
       </div>
-      <div class="calc">
-        <div class="calc_key number back_gray line_center">7</div>
-        <div class="calc_key number back_gray line_center">8</div>
-        <div class="calc_key number back_gray line_center">9</div>
-        <div class="calc_key number back_gray line_center">4</div>
-        <div class="calc_key number back_gray line_center">5</div>
-        <div class="calc_key number back_gray line_center">6</div>
 
-        <div class="calc_key number back_gray line_center">1</div>
-        <div class="calc_key number back_gray line_center">2</div>
-        <div class="calc_key number back_gray line_center">3</div>
-        <div class="calc_key number back_gray line_center">0</div>
-        <div class="calc_key clear back_gray line_center">クリア</div>
-        <div class="calc_key submit back_green line_center">送信</div>
+      <div class="exchange">
+        <p class="font_normal">ミッションの種類</p>
+        <div class="exchange_select">
+          <div class="exchange_key back_gray line_center">F</div>
+          <div class="exchange_key back_gray line_center">E</div>
+          <div class="exchange_key back_gray line_center">D</div>
+          <div class="exchange_key back_gray line_center">C</div>
+          <div class="exchange_key back_gray line_center">B</div>
+          <div class="exchange_key back_gray line_center">A</div>
+          <div class="exchange_key back_gray line_center">S</div>
+          <div class="exchange_key back_gray line_center">SS</div>
+        </div>
+        <p class="font_normal">ミッションを換金する数</p>
+        <div class="exchange_count">
+          <div class="exchange_count_key number back_gray line_center">1</div>
+          <div class="exchange_count_key number back_gray line_center">2</div>
+          <div class="exchange_count_key number back_gray line_center">3</div>
+          <div class="exchange_count_key number back_gray line_center">4</div>
+          <div class="exchange_count_key number back_gray line_center">5</div>
+          <div class="exchange_count_key number back_gray line_center">6</div>
+          <div class="exchange_count_key number back_gray line_center">7</div>
+          <div class="exchange_count_key number back_gray line_center">8</div>
+          <div class="exchange_count_key number back_gray line_center">9</div>
+          <div class="exchange_count_key number back_gray line_center">10</div>
+        </div>
+        <div class="exchange_submit submit_template back_green line_center">換金する</div>
+      </div>
+
+      <div class="calulate">
+        <div class="calulate_operation back_gray line_center"><p></p></div>
+        <div class="calulate_amount back_gray line_right">　</div>
+
+        <div class="calc_ope">
+          <div class="ope_key operation back_gray line_center">+</div>
+          <div class="ope_key operation back_gray line_center">-</div>
+          <div class="ope_key operation back_gray line_center">×</div>
+          <div class="ope_key operation back_gray line_center">÷</div>
+        </div>
+        <div class="calc">
+          <div class="calc_key number back_gray line_center">7</div>
+          <div class="calc_key number back_gray line_center">8</div>
+          <div class="calc_key number back_gray line_center">9</div>
+          <div class="calc_key number back_gray line_center">4</div>
+          <div class="calc_key number back_gray line_center">5</div>
+          <div class="calc_key number back_gray line_center">6</div>
+
+          <div class="calc_key number back_gray line_center">1</div>
+          <div class="calc_key number back_gray line_center">2</div>
+          <div class="calc_key number back_gray line_center">3</div>
+          <div class="calc_key number back_gray line_center">0</div>
+          <div class="calc_key clear back_gray line_center">クリア</div>
+          <div class="calc_key submit back_green line_center">送信</div>
+        </div>
       </div>
     </div>
   </body>
