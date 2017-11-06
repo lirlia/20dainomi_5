@@ -25,11 +25,6 @@ $(function() {
   //送信をクリックした時の処理
   $('.gacha_submit').on(_touch, function() {
 
-    //チームが未チェック
-    if (!$('.select_area').children().hasClass('back_blue')) {
-      alert('チーム名を選択してください')
-      return
-    }
     //ガチャの種類が未チェック
     if (!$('.gacha_select').children().hasClass('back_red')) {
       alert('ガチャの種類を選択してください')
@@ -45,15 +40,13 @@ $(function() {
       alert('ガチャを引く回数を選択してください')
       return
     }
+
     //処理
     gachaPostAction()
-    $('.team').removeClass('back_blue')
-    $('.team').addClass('back_gray')
     $('.gacha_key').removeClass('back_red')
     $('.gacha_key').addClass('back_gray')
     $('.gacha_count_key').removeClass('back_red')
     $('.gacha_count_key').addClass('back_gray')
-    my_firebase()
   })
 
   //投稿処理
@@ -75,10 +68,15 @@ $(function() {
     // 計算
     total = current_price - gacha_price_amount
 
+    if(!confirm($('.gacha_key.back_red').text() + "を" + gacha_count + "回引きますか？")){
+          return false;
+    }
+
     // push
     ref.set(total)
     ref_log.push({
       date: new Date().getTime(),
+      message: "「" + $('.gacha_key.back_red').text() + "」を" + gacha_count + "回ひきました",
       value: total - current_price
     });
   }

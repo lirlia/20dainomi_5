@@ -1,9 +1,5 @@
 .select_area {
-  font-size: 0px;
-}
-
-.team {
-  width: 20%;
+  width: 100%;
   padding: 4% 0;
   display: inline-block;
   font-size: 13px;
@@ -22,12 +18,12 @@
 }
 
 /* ガチャ */
-.gacha, .exchange {
+.gacha, .exchange, .item {
   width: 100%;
   font-size: 0px;
 }
 
-.gacha_select, .exchange_select {
+.gacha_select, .exchange_select, .item_select {
   margin-bottom: 15px;
 }
 
@@ -38,9 +34,9 @@
   font-size: 13px;
 }
 
-.gacha_count_key, .exchange_count_key {
+.gacha_count_key, .exchange_count_key, .item_count_key {
   width: calc(100% / 5);
-  padding: 2% 0;
+  padding: 4% 0;
   display: inline-block;
   font-size: 13px;
 }
@@ -48,6 +44,15 @@
 /* 換金 */
 
 .exchange_key {
+  width: calc(100% / 4);
+  padding: 4% 0;
+  display: inline-block;
+  font-size: 13px;
+}
+
+/* 道具 */
+
+.item_key {
   width: calc(100% / 4);
   padding: 4% 0;
   display: inline-block;
@@ -125,3 +130,10 @@
   padding: 4% 0;
   margin: 20px auto;
 }
+
+/* 購買履歴 */
+
+.content {max-width:760px;margin:3em auto}
+.content .post{margin-top:2em;border-bottom:1px dotted #ccc;padding:0 1em 1em}
+.content .post .post-date{font-size:.7em;color:#848484;text-align:right;border:0;margin:0}
+.content .post .post-text{margin:0}

@@ -35,7 +35,7 @@ $(function() {
         labels : labels,
         datasets : [
             {
-            label: "全チームの所持金",
+            label: "各チームの所持金",
             backgroundColor: "rgba(0,181,198,0.5)",
             data : data,
             }
@@ -94,7 +94,15 @@ $(function() {
           options: {
             animation: false,
             scales: {
+              xAxes: [{
+                gridLines : {
+                  display : false
+                }
+              }],
               yAxes: [{
+                gridLines : {
+                  display : false
+                },
                 ticks: {
                     beginAtZero: true,
                     fontSize: 17

@@ -14,65 +14,26 @@
       <script src="./js/calc.js"></script>
       <script src="./js/gacha.js"></script>
       <script src="./js/exchange.js"></script>
-      <script src="./js/nego.js"></script>
+      <script src="./js/item.js"></script>
   </head>
 
   <body>
+    <div class="select_area back_red line_center"></div>
     <div class="tool_tab_area">
       <div class="tool back_blue line_center gacha_tool">ガチャ</div>
       <div class="tool back_gray line_center exchange_tool">換金</div>
+      <div class="tool back_gray line_center item_tool">道具</div>
       <div class="tool back_gray line_center calulate_tool">電卓</div>
-      <div class="tool back_gray line_center nego_tool">交渉</div>
     </div>
-    <div class="select_area">
-      <div class="team back_gray line_center">1</div>
-      <div class="team back_gray line_center">2</div>
-      <div class="team back_gray line_center">3</div>
-      <div class="team back_gray line_center">4</div>
-      <div class="team back_gray line_center">5</div>
-      <div class="team back_gray line_center">6</div>
-      <div class="team back_gray line_center">7</div>
-      <div class="team back_gray line_center">8</div>
-      <div class="team back_gray line_center">9</div>
-      <div class="team back_gray line_center">10</div>
-    </div>
-    <div class="multi_select_area">
-      <select name="src_team" size="1" class="src_team select line_center">
-        <option value="お金を払うチームを選択">お金を払うチームを選択</option>
-        <option value="1">チーム1</option>
-        <option value="2">チーム2</option>
-        <option value="3">チーム3</option>
-        <option value="4">チーム4</option>
-        <option value="5">チーム5</option>
-        <option value="6">チーム6</option>
-        <option value="7">チーム7</option>
-        <option value="8">チーム8</option>
-        <option value="9">チーム9</option>
-        <option value="10">チーム10</option>
-      </select>
-      <p class="font_normal line_center">↓</p>
-      <select name="dest_team" size="1" class="dest_team select line_center">
-        <option value="お金を受け取るチームを選択">お金を受け取るチームを選択</option>
-        <option value="1">チーム1</option>
-        <option value="2">チーム2</option>
-        <option value="3">チーム3</option>
-        <option value="4">チーム4</option>
-        <option value="5">チーム5</option>
-        <option value="6">チーム6</option>
-        <option value="7">チーム7</option>
-        <option value="8">チーム8</option>
-        <option value="9">チーム9</option>
-        <option value="10">チーム10</option>
-      </select>
-    </div>
+    <p class="line_center top_margin_5">現在の所持金</p>
     <div class="current_money back_gray line_right"></div>
     <div class="toolbox">
       <div class="gacha">
         <p class="font_normal">ガチャの種類</p>
         <div class="gacha_select">
-          <div class="gacha_key back_gray line_center">ガチャ(銅)</div>
-          <div class="gacha_key back_gray line_center">未解禁</div>
-          <div class="gacha_key back_gray line_center">未解禁</div>
+          <div class="gacha_key back_gray line_center">ガチャ(鉄)</div>
+          <div class="gacha_key back_gray line_center">ガチャ(銀)</div>
+          <div class="gacha_key back_gray line_center">ガチャ(金)</div>
         </div>
         <p class="font_normal">ガチャを引く回数</p>
         <div class="gacha_count">
@@ -118,6 +79,34 @@
         <div class="exchange_submit submit_template back_green line_center">換金する</div>
       </div>
 
+      <div class="item">
+        <p class="font_normal">アイテムの種類</p>
+        <div class="item_select">
+          <div class="item_key back_gray line_center">ペグシル</div>
+          <div class="item_key back_gray line_center">折り紙セット</div>
+          <div class="item_key back_gray line_center">輪ゴム</div>
+          <div class="item_key back_gray line_center">コイン</div>
+          <div class="item_key back_gray line_center">消しゴム</div>
+          <div class="item_key back_gray line_center">A4紙</div>
+          <div class="item_key back_gray line_center">割り箸</div>
+          <div class="item_key back_gray line_center">マッチ棒</div>
+        </div>
+        <p class="font_normal">アイテムを換金する数</p>
+        <div class="item_count">
+          <div class="item_count_key number back_gray line_center">1</div>
+          <div class="item_count_key number back_gray line_center">2</div>
+          <div class="item_count_key number back_gray line_center">3</div>
+          <div class="item_count_key number back_gray line_center">4</div>
+          <div class="item_count_key number back_gray line_center">5</div>
+          <div class="item_count_key number back_gray line_center">6</div>
+          <div class="item_count_key number back_gray line_center">7</div>
+          <div class="item_count_key number back_gray line_center">8</div>
+          <div class="item_count_key number back_gray line_center">9</div>
+          <div class="item_count_key number back_gray line_center">10</div>
+        </div>
+        <div class="item_submit submit_template back_green line_center">購入する</div>
+      </div>
+
       <div class="calulate">
         <div class="calulate_operation back_gray line_center"><p></p></div>
         <div class="calulate_amount back_gray line_right">　</div>
@@ -145,5 +134,8 @@
         </div>
       </div>
     </div>
+    <p class="line_center top_margin_10">入出金の履歴</p>
+    <hr>
+    <div class="content"><div class="dummy"></div></div>
   </body>
 </html>

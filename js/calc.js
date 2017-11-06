@@ -32,34 +32,25 @@ $(function() {
   //送信をクリックした時の処理
   $('.submit').on(_touch, function() {
 
-    if (!$(".multi_select_area").is(':visible')){
-
-      //チームが未チェック
-      if (!$('.select_area').children().hasClass('back_blue')) {
-        alert('チーム名を選択してください')
-        return
-      }
-      //四則演算が未チェック
-      if ($('.calulate_operation').text() == '') {
-        alert('四則演算を選択してください')
-        return
-      }
-      //数値が未入力
-      if ($('.calulate_amount').text() == '　') {
-        alert('数値を入力してください')
-        return
-      }
-      //処理
-      calcPostAction()
-      $('.team').removeClass('back_blue')
-      $('.team').addClass('back_gray')
-      $('.ope_key').removeClass('back_red')
-      $('.ope_key').addClass('back_gray')
-      $('.calulate_operation p').text('')
-      $('.calulate_amount').text('　')
-      my_firebase()
+    //四則演算が未チェック
+    if ($('.calulate_operation').text() == '') {
+      alert('四則演算を選択してください')
+      return
     }
-  })
+    //数値が未入力
+    if ($('.calulate_amount').text() == '　') {
+      alert('数値を入力してください')
+      return
+    }
+    //処理
+    calcPostAction()
+    $('.ope_key').removeClass('back_red')
+    $('.ope_key').addClass('back_gray')
+    $('.calulate_operation p').text('')
+    $('.calulate_amount').text('　')
+    //my_firebase()
+  });
+
   //投稿処理
   function calcPostAction() {
     current_price = parseInt(removeComma($('.current_money').text()));
@@ -88,11 +79,19 @@ $(function() {
       total = Math.floor(current_price / num)
     }
 
-    ref.set(total)
+    // 差分
+    diff = total - current_price
 
+    // 念のための確認
+    if(!confirm("所持金を変更しますか？(" + ope + "" + num + ")")){
+          return false;
+      }
+
+    ref.set(total)
     ref_log.push({
       date: new Date().getTime(),
-      value: total - current_price
+      message: "電卓で金額を変更しました。",
+      value: diff
     });
   };
 });
